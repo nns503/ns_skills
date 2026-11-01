@@ -1,0 +1,11 @@
+{
+  "name": "ns-skills",
+  "owner": {
+    "name": "nns503"
+  },
+  "metadata": {
+    "description": "한국어로 설명하고 관리하는 개인 에이전트 스킬 모음",
+    "version": "0.1.0"
+  },
+  "plugins": []
+}
