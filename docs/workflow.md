@@ -34,6 +34,16 @@ CI 준비는 기술 설계·구현에 포함합니다. 릴리스 단계는 해�
 
 커밋·PR, 범위, 코드·네이밍, 의존성, 검증, 호환성, 설정·보안, 문서 규칙을 다룹니다. 포맷·린트·테스트의 세부 규칙은 실제 설정 파일을 원본으로 사용합니다. 오케스트레이터는 각 단계에 관련 규칙을 전달하고 `verify`에서 준수를 확인합니다.
 
+용어가 혼동되거나 중요한 결정을 정할 때는 [도메인 용어·결정 기준](../skills/project-conventions/references/domain-language.md)을 사용합니다. 실제 사용자 개념·현재 코드 이름·공개 계약을 구분하고, 필요한 기록만 대상 앱에 남깁니다.
+
+## 전문 분야와 실패 경로
+
+단계 선택과 함께 [작업 성격별 연결 기준](../skills/app-orchestrator/references/skill-routing.md)을 적용합니다. 외부 전문 스킬은 현재 환경의 실제 식별자·가용성·역할을 확인한 뒤 관련 범위에 사용합니다.
+
+기술별 연결은 [스택 지침](../skills/technical-design/references/stack-guidance.md)을 따릅니다. 웹 지침은 해당 웹 작업에, React·Next.js·React Native·Expo·PostgreSQL·Supabase 지침은 실제 구성이 확인된 작업에만 선택합니다. 이 저장소가 해당 기술·외부 스킬을 자동 설치하지는 않습니다.
+
+버그·빌드·테스트 실패는 [디버깅 기준](../skills/implement/references/debugging.md)에 따라 재현·실패 위치·가설·최소 실험·수정·회귀 확인을 연결합니다. `verify`는 완료 주장에 맞는 실제 근거와 유효한 검증 범위를 구분합니다.
+
 ## 릴리스 구분
 
 환경·플랫폼·배포 경로·대상 버전·완료 목표를 조합합니다. 개발 배포에서 운영으로 자동 승격하거나 앱 업로드를 실제 출시로 보고하지 않습니다. 외부 심사 대기와 미검증 상태를 그대로 전달합니다.
@@ -65,6 +75,11 @@ CI 준비는 기술 설계·구현에 포함합니다. 릴리스 단계는 해�
 | 기존 기능 삭제·명세 이름 변경 | 삭제를 누락으로 오인하지 않고 유지할 동작과 구분해 검증 | 미실행 |
 | 코드에 기존 버그가 있는 기능 기획 | 관찰 동작과 의도한 요구를 구분하고 버그를 명세로 고정하지 않음 | 미실행 |
 | 함수·필드 계약 변경 | diff 밖의 호출자·export·fixture·직렬화 영향 확인 | 미실행 |
+| 실패한 수정이 반복되는 버그 | 새 추측을 덧붙이지 않고 원인·가설·실험 결과를 재검토 | 미실행 |
+| 사용자와 코드가 같은 용어를 다르게 사용 | 의미·기존 이름 매핑을 정리하고 공개 이름 자동 변경 없음 | 미실행 |
+| React·PostgreSQL이 없는 프로젝트 | 해당 스택의 전문 지침·설치를 강제하지 않음 | 미실행 |
+| 실제 React·PostgreSQL 프로젝트 | 관련 전문 지침·버전·도구의 적용 범위와 역할을 확인 | 미실행 |
+| 린트만 통과한 구현 | 빌드·테스트·실제 동작 전체가 성공했다고 보고하지 않음 | 미실행 |
 
 먼저 한 클라이언트와 작은 대상 프로젝트에서 시험한 다음 결과에 따라 수정합니다. 이후 다른 클라이언트 설치와 앱별 릴리스를 확인합니다.
 
@@ -77,10 +92,15 @@ CI 준비는 기술 설계·구현에 포함합니다. 릴리스 단계는 해�
 
 ## 참고한 아이디어
 
-실제 스킬·템플릿 19개와 공식 문서 9개의 검토 판본·적용 위치는 [레퍼런스 기록](references.md)에 정리했습니다. 단계별 `references/`에는 해당 판단에 필요한 기준과 출처를 함께 두었습니다.
+실제 스킬·템플릿·문서 38개와 공식 문서 9개의 검토 판본·적용 위치는 [레퍼런스 기록](references.md)에 정리했습니다. 단계별 `references/`에는 해당 판단에 필요한 기준과 출처를 함께 두었습니다.
 
 - [speckit-agent-skills](https://github.com/dceoy/speckit-agent-skills): 명세·계획·작업·구현의 단계 구성
 - [OpenSpec](https://github.com/Fission-AI/OpenSpec): 기존 프로젝트와 변경 단위의 기록·반복 개발
 - [Ponytail](https://github.com/DietrichGebert/ponytail): 기존 기능 재사용과 과도한 개발 억제
+- [Addy Osmani](https://github.com/addyosmani/agent-skills): 단계·전문 분야별 선택, API·전환·출시
+- [Superpowers](https://github.com/obra/superpowers): 원인 조사·가설 검증과 완료 근거
+- [Matt Pocock](https://github.com/mattpocock/skills): 질문의 선행 관계·도메인 용어·중요한 결정 기록
+- [BMAD](https://github.com/bmad-code-org/BMAD-METHOD): 의도·위험에 맞는 깊이와 공유 결정
+- [Vercel](https://github.com/vercel-labs/agent-skills)·[Supabase](https://github.com/supabase/agent-skills): 실제 기술 구성에 맞는 전문 지침 선택
 
 이 문서와 스킬 본문은 이번 요구에 맞춰 새로 작성했습니다. 참고 프로젝트의 전체 도구 체계나 소스 코드를 포함하지 않습니다.

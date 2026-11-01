@@ -4,7 +4,7 @@
 
 신규 앱 개발, 기능 추가, 버그 수정과 리팩토링에서 필요한 단계를 선택하고 기획부터 구현·검증·요청된 배포까지 연결합니다. 개별 단계만 따로 사용할 수도 있습니다.
 
-> **v0.1.0 초안:** 8개 스킬과 마켓플레이스 설정을 작성했습니다. 스킬 형식과 로컬 파일 연결을 확인했으며, 실제 클라이언트 설치·앱 개발·배포를 통한 동작 검증은 아직 수행하지 않았습니다.
+> **v0.1.1 초안:** 8개 스킬과 마켓플레이스 설정을 작성했습니다. 스킬 형식과 로컬 파일 연결을 확인했으며, 실제 클라이언트 설치·앱 개발·배포를 통한 동작 검증은 아직 수행하지 않았습니다.
 
 ## 스킬 목록
 
@@ -43,11 +43,11 @@ $release로 모바일 앱의 내부 테스트용 빌드를 준비해줘. 스토�
 
 ## 설치와 구성
 
-`ns-skills` 플러그인 하나에 8개 스킬을 묶었습니다. Claude Code·Codex의 마켓플레이스 설정을 제공하며, 실제 설치 지원과 호출 이름은 사용하는 클라이언트에서 확인해야 합니다. **로컬 초안이 GitHub에 반영되기 전에는 원격 저장소 설치에 이번 변경이 포함되지 않습니다.**
+`ns-skills` 플러그인 하나에 8개 스킬을 묶었습니다. Claude Code·Codex의 마켓플레이스 설정을 제공하며, 실제 설치 지원과 호출 이름은 사용하는 클라이언트에서 확인해야 합니다. 원격 소스로 설치할 때는 GitHub에 푸시된 판본이 사용됩니다.
 
 - [마켓플레이스 설치·구성 안내](docs/marketplace.md)
 - [전체 설계와 초기 검증 시나리오](docs/workflow.md)
-- [레퍼런스 28개 검토와 반영 기록](docs/references.md)
+- [레퍼런스 검토와 반영 기록](docs/references.md)
 - [스킬 작성 안내](docs/creating-skills.md)
 
 ## 저장소 구조
@@ -87,8 +87,12 @@ ns_skills/
 
 ## 출처와 라이선스
 
-저장소 구성은 [anthropics/skills](https://github.com/anthropics/skills), 워크플로 아이디어는 [speckit-agent-skills](https://github.com/dceoy/speckit-agent-skills), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [Ponytail](https://github.com/DietrichGebert/ponytail)을 참고했습니다. 이번 초안의 지침은 이 저장소의 요구에 맞춰 새로 작성했으며, 참고 프로젝트의 코드·스킬 본문을 복사하지 않았습니다.
+저장소 구성은 [anthropics/skills](https://github.com/anthropics/skills), 명세·변경 관리와 단순한 구현 원칙은 [speckit-agent-skills](https://github.com/dceoy/speckit-agent-skills), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [Ponytail](https://github.com/DietrichGebert/ponytail)을 참고했습니다.
+
+스킬 선택·API·전환·출시는 [Addy Osmani](https://github.com/addyosmani/agent-skills), 디버깅·완료 검증은 [Superpowers](https://github.com/obra/superpowers), 기획 질문·도메인 용어는 [Matt Pocock](https://github.com/mattpocock/skills), 작업 규모·공유 결정은 [BMAD](https://github.com/bmad-code-org/BMAD-METHOD)를 추가로 참고했습니다. [Vercel](https://github.com/vercel-labs/agent-skills)·[Supabase](https://github.com/supabase/agent-skills)의 전문 지침은 실제 기술 구성에 맞춰 선택하도록 했습니다.
+
+이번 지침은 이 저장소의 요구에 맞춰 새로 작성했으며, 참고 프로젝트의 코드·스킬 본문을 복사하지 않았습니다.
 
 외부 자료를 추후 포함하면 원본 URL·라이선스·변경 내용을 기록합니다. 저장소 전체의 배포 라이선스는 아직 정하지 않았습니다.
 
-공유받은 네 저장소의 실제 스킬·템플릿 19개와 공식 문서 9개를 추가 검토해 단계별 판단 기준을 보강했습니다. [레퍼런스 기록](docs/references.md)에서 고정된 원본 파일과 반영 위치를 확인할 수 있습니다. 각 스킬은 관련 상황에 필요한 참고 문서만 읽도록 구성했습니다.
+실제 스킬·템플릿·문서 38개와 공식 문서 9개를 검토해 단계별 판단 기준을 보강했습니다. [레퍼런스 기록](docs/references.md)에서 고정된 원본 파일과 반영 위치를 확인할 수 있습니다. 각 스킬은 관련 상황에 필요한 참고 문서만 읽도록 구성했습니다.

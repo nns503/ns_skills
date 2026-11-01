@@ -4,6 +4,8 @@
 
 파일 수나 기능 이름만으로 깊이를 정하지 않는다. 사용자에게 보이는 변화, 계약·데이터 영향, 되돌리기 어려움과 미확정 사항을 기준으로 정한다.
 
+여러 작업이 독립적으로 구현되더라도 같은 API·상태·데이터 소유권·사용자 흐름을 선택해야 하면 공유 결정을 먼저 정리한다. 시각 표현과 실제 조작·상태 동작을 구분해 전달하되, 별도 문서 두 개를 의무화하지 않는다.
+
 | 상황 | 필요한 흐름 | 줄일 수 있는 부분 |
 | --- | --- | --- |
 | 새 앱 | 핵심 사용자 흐름 하나의 기획·UX·기술 설계·구현·검증 | 미래 기능과 추측한 확장 구조 |
@@ -42,5 +44,6 @@
 - [Spec Kit baseline](https://github.com/dceoy/speckit-agent-skills/blob/4bddf979ec6c9c682ddceee56d41646045297072/skills/speckit-baseline/SKILL.md): 기존 코드에서 동작과 가정을 파악하는 접근 참고
 - [Spec Kit converge](https://github.com/dceoy/speckit-agent-skills/blob/4bddf979ec6c9c682ddceee56d41646045297072/skills/speckit-converge/SKILL.md): 의도·작업·실제 코드의 차이 분류 참고
 - [OpenSpec update-change](https://github.com/Fission-AI/OpenSpec/blob/27c0515724decc633818c735ee596481eec78a8b/skills/openspec-update-change/SKILL.md): 이미 존재하는 산출물 사이의 양방향 정합성 확인 참고
+- [BMAD UX·아키텍처 설계](https://github.com/bmad-code-org/BMAD-METHOD/blob/bd70c643a7ec85d1ec2e88076b3fbdd8e4517f41/docs/plan/design-ux-and-architecture.md): 작업 사이의 충돌을 막는 공유 결정 참고
 
 경로·판단 기준은 NS Skills용으로 새로 작성했다. 원본의 고정 문서 수, 별도 명령, 매 파일 수정 승인 절차는 이 규칙의 기본 요구사항이 아니다.

@@ -10,6 +10,20 @@
 
 명세가 이번 작업에 불필요한 경우와 필수 명세를 읽을 수 없는 경우를 구분한다. 후자는 미검증이며 통과가 아니다. 테스트 파일이 존재하는 것과 실제 실행해 통과한 것도 구분한다.
 
+## 완료 주장과 근거의 범위
+
+검사 명령·종료 상태·출력과 대상 코드·입력·환경을 확인한다. 실패 출력을 무시하거나 검사를 줄여 이전과 같은 성공인 것처럼 표시하지 않는다.
+
+| 주장 | 필요한 근거 |
+| --- | --- |
+| 빌드 성공 | 해당 버전의 실제 빌드 결과 |
+| 테스트 통과 | 실행한 테스트 범위와 실제 결과 |
+| 버그 수정 | 원래 재현 조건의 결과와 필요한 회귀 확인 |
+| 요구 충족 | 요구·시나리오별 구현·실행 근거 |
+| 배포 동작 확인 | 대상 버전·환경과 실제 서비스·앱의 관련 동작 |
+
+같은 입력·코드·환경의 유효한 결과는 재사용하고, 바뀐 부분에 영향을 받는 검증만 다시 수행한다. 매 응답마다 전체 검사를 반복하는 것은 이 기준의 요구가 아니다.
+
 ## 변경 종류에 맞는 검증
 
 | 변경 | 확인 기준 |
@@ -36,5 +50,6 @@
 - [Ponytail review](https://github.com/DietrichGebert/ponytail/blob/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846/skills/ponytail-review/SKILL.md): diff 밖의 영향과 구체적인 실패 조건 확인 참고
 - [Google 코드 리뷰 기준](https://google.github.io/eng-practices/review/reviewer/looking-for.html): 설계·기능·복잡성·테스트·명명·일관성 검토 참고
 - [Playwright 자동 대기](https://playwright.dev/docs/actionability): 웹 자동화의 동작 조건·재시도 단언 참고
+- [Superpowers 완료 전 검증](https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/verification-before-completion/SKILL.md): 완료 주장별로 실제 근거를 확인하는 기준 참고
 
 위 내용을 한국어로 재구성한 자체 검증 기준이다. 필수 테스트 수·커버리지 비율·고정 리뷰 문구를 추가하지 않는다.

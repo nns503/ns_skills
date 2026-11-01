@@ -27,11 +27,19 @@
 
 웹 UI를 검증할 때는 현재 렌더링된 화면과 접근 가능한 이름·역할을 확인한 뒤 조작 대상을 고른다. 완료 판단은 화면 캡처뿐 아니라 기대 상태·저장 결과·다음 동작으로 확인한다. 자동화 도구가 제공하는 조건 대기와 재시도 단언을 활용한다. 고정 시간 대기나 예제의 특정 로딩 조건을 모든 앱에 강제하지 않는다.
 
+## 전문 지침 연결
+
+웹 UI의 세부 검토에는 사용 가능한 Web Interface Guidelines 같은 웹 지침을, React·Next.js 또는 React Native·Expo가 실제 구성인 경우에는 해당 전문 지침을 선택할 수 있다. 이번 변경의 대상·버전·적용 규칙을 확인하고 관련 내용만 사용한다. 기술을 추정해 특정 라이브러리나 전체 규칙 묶음을 기본으로 설치하지 않는다.
+
+여러 화면·작업이 같은 시각·상호작용 원칙을 사용해야 하면 공유 결정을 전달한다. 작은 기존 화면 수정에 전면 UX 설계나 새 문서 묶음을 요구하지 않는다.
+
 ## 설계 근거
 
 - [Anthropic frontend-design](https://github.com/anthropics/skills/blob/ca45fc496a3436251f191354091d557da31c15b5/skills/frontend-design/SKILL.md): 사용자·콘텐츠에 맞는 시각적 결정 참고
 - [Anthropic webapp-testing](https://github.com/anthropics/skills/blob/ca45fc496a3436251f191354091d557da31c15b5/skills/webapp-testing/SKILL.md): 현재 렌더링 상태 확인 후 조작하는 흐름 참고
 - [W3C 상태 메시지 해설](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html): 상태 전달의 접근성 참고
 - [Playwright 자동 대기](https://playwright.dev/docs/actionability): 도구 사용 시 동작 가능 조건·재시도 단언 확인
+- [Vercel 웹 UI 지침 스킬](https://github.com/vercel-labs/agent-skills/blob/1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62/skills/web-design-guidelines/SKILL.md): 실제 웹 지침의 적용 대상 확인과 관련 규칙 검토 참고
+- [BMAD UX·아키텍처](https://github.com/bmad-code-org/BMAD-METHOD/blob/bd70c643a7ec85d1ec2e88076b3fbdd8e4517f41/docs/plan/design-ux-and-architecture.md): 시각 표현·실제 동작 구분과 공유 결정 참고
 
 특정 자동화 라이브러리나 스타일을 필수로 채택하는 문서가 아니다. 접근성의 일부 항목을 확인한 결과를 전체 표준 준수 인증으로 보고하지 않는다.

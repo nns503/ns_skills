@@ -15,6 +15,10 @@
 - 안전하게 되돌릴 수 있는 선택은 가정을 명시해 진행할 수 있다. 데이터 손실이나 권한 범위처럼 임의로 정할 수 없는 핵심 선택은 해소한다.
 - 질문 개수나 답변 글자 수를 고정하지 않는다. 이미 받은 답을 다시 묻지 않는다.
 
+질문이 다른 미확정 답에 의존하면 선행 결정을 먼저 다룬다. 저장소·문서에서 알 수 있는 사실은 직접 조사하고, 사용자에게 필요한 선택은 영향과 합리적인 제안을 함께 설명한다. 중요한 결정을 해소하는 데 필요한 만큼 질문하고 일상적인 구현 선택까지 모두 사용자에게 넘기지 않는다.
+
+사용자·기획·코드가 같은 단어를 다르게 쓰면 이번 시나리오의 의미를 확인한다. 합의한 도메인 정의와 기존 코드의 차이를 남기고 새 용어를 정했다고 공개 이름을 일괄 변경하지 않는다.
+
 ## 기존 요구와의 관계
 
 | 변경 종류 | 기록할 내용 | 검증 방향 |
@@ -41,5 +45,7 @@
 - [Spec Kit specify](https://github.com/dceoy/speckit-agent-skills/blob/4bddf979ec6c9c682ddceee56d41646045297072/skills/speckit-specify/SKILL.md): 사용자 가치·범위·검증 가능한 성공 조건
 - [Spec Kit clarify](https://github.com/dceoy/speckit-agent-skills/blob/4bddf979ec6c9c682ddceee56d41646045297072/skills/speckit-clarify/SKILL.md): 영향에 따른 모호성 확인
 - [OpenSpec 기본 스키마](https://github.com/Fission-AI/OpenSpec/blob/27c0515724decc633818c735ee596481eec78a8b/schemas/spec-driven/schema.yaml): 행동 계약과 변경분 구분
+- [Matt Pocock grilling](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/grilling/SKILL.md): 결정의 선행 관계와 사실 조사·사용자 선택의 구분 참고
+- [Matt Pocock domain-modeling](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/domain-modeling/SKILL.md): 개념 경계·시나리오·기존 코드와의 대조 참고
 
 위 기준은 참고 내용을 바탕으로 새로 작성한 NS Skills의 판단 기준이다. 참고 도구의 설치와 문서 양식 전체를 요구하지 않는다.
