@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ns-skills",
+  "version": "0.1.0",
+  "description": "앱 기획부터 구현·검증·환경별 배포까지 연결하는 한국어 개발 워크플로 스킬 초안",
+  "author": {
+    "name": "nns503"
+  },
+  "repository": "https://github.com/nns503/ns_skills"
+}

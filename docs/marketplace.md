@@ -1,80 +1,64 @@
-# 마켓플레이스 구성 안내
+# 마켓플레이스 설치·구성 안내
 
-## 현재 상태
+## 현재 패키지
 
-실제 스킬이 아직 없으므로 두 마켓플레이스의 `plugins` 목록은 비워 두었습니다. 현재 파일은 목록을 작성하기 위한 초기 구성입니다. 클라이언트에서 등록·설치하는 동작은 아직 확인하지 않았습니다.
+`ns-skills` 플러그인 하나에 `skills/`의 8개 스킬을 포함합니다. `template/`와 프로젝트별 작업 기록은 스킬 목록에 포함하지 않습니다.
 
-첫 스킬을 추가한 뒤 플러그인 항목을 등록하고, 해당 클라이언트에서 설치와 실행을 확인합니다. `template/`는 배포하지 않습니다.
+- 루트 `plugin.json`: 이름·버전·설명과 패키지 식별 정보
+- `.agents/plugins/marketplace.json`: Codex용 플러그인 소스 목록
+- `.claude-plugin/marketplace.json`: Claude Code용 목록과 포함할 스킬 경로
 
-## 원본은 한 곳에서 관리
+스킬 원본은 중복 복사하지 않습니다. 새 스킬을 추가하면 Claude Code 목록의 경로도 갱신합니다. Codex의 루트 플러그인은 `skills/`에서 스킬을 찾습니다.
 
-스킬은 모두 루트 `skills/`에 둡니다. Claude Code와 Codex는 마켓플레이스 및 플러그인 설정이 다르므로 각 환경의 설정 파일을 따로 관리합니다. 지원 환경을 늘릴 때 스킬 내용을 복사하기보다 패키징 설정을 추가합니다.
+현재 초안은 로컬 파일의 형식·연결을 확인한 단계이며, 실제 클라이언트 설치와 실행은 미검증입니다. 아래 설치 명령은 지원되는 환경에서 사용하는 안내이며 실행 완료 기록이 아닙니다.
 
-## Claude Code
+## 로컬 초안 확인
 
-목록 파일은 `.claude-plugin/marketplace.json`입니다. [anthropics/skills의 목록](https://github.com/anthropics/skills/blob/main/.claude-plugin/marketplace.json)처럼 루트를 소스로 지정하고 묶음에 포함할 스킬 경로를 나열할 수 있습니다.
+지원되는 Codex CLI에서는 저장소 루트에서 로컬 마켓플레이스를 등록할 수 있습니다.
 
-예를 들어 실제 `skills/meeting-notes/`를 만든 뒤에는 `plugins`에 다음 항목을 넣는 방식입니다. 아래 항목은 설명용이며 현재 목록에는 포함하지 않았습니다.
-
-```json
-{
-  "name": "ns-workflows",
-  "description": "한국어 회의록과 업무 정리 스킬",
-  "source": "./",
-  "strict": false,
-  "skills": ["./skills/meeting-notes"]
-}
+```bash
+codex plugin marketplace add .
+codex plugin marketplace list
 ```
 
-GitHub에 반영하고 플러그인 항목을 완성한 다음, Claude Code에서 등록·설치를 확인합니다.
+사용하는 클라이언트의 플러그인 목록에서 `NS Skills · 한국어 스킬 모음` 소스와 `ns-skills`를 확인하고 설치합니다. 클라이언트별 표시·설치 지원은 해당 버전의 안내를 확인합니다. 설치된 복사본이 사용될 수 있으므로 수정 후 소스 갱신·재설치·재시작 필요 여부를 확인합니다.
 
-```text
-/plugin marketplace add nns503/ns_skills
-/plugin install ns-workflows@ns-skills
-```
+## GitHub 소스 사용
 
-## Codex
+로컬 변경을 GitHub에 반영한 뒤 아래 명령으로 원격 소스를 등록할 수 있습니다. 푸시 전에는 원격 설치에 새 스킬이 포함되지 않습니다.
 
-목록 파일은 `.agents/plugins/marketplace.json`입니다. 루트 `skills/`를 유지하려면 저장소 루트에 `plugin.json`을 추가해 하나의 플러그인으로 패키징하는 구성이 단순합니다. 처음에는 이 방식으로 시작하고, 독립적으로 설치할 묶음이 필요해지면 패키징 구성을 나눕니다.
-
-첫 스킬을 추가할 때 사용할 루트 `plugin.json` 예시입니다.
-
-```json
-{
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "ns-skills",
-  "version": "0.1.0",
-  "description": "한국어로 설명하고 관리하는 개인 에이전트 스킬 모음"
-}
-```
-
-이 형식은 플러그인 루트의 `skills/`에서 스킬을 찾습니다. 그다음 Codex 마켓플레이스의 `plugins`에 다음 항목을 추가합니다.
-
-```json
-{
-  "name": "ns-skills",
-  "source": {
-    "source": "local",
-    "path": "./"
-  },
-  "policy": {
-    "installation": "AVAILABLE",
-    "authentication": "ON_INSTALL"
-  },
-  "category": "Productivity"
-}
-```
-
-GitHub 반영 후 CLI에서 마켓플레이스 소스를 추가할 수 있습니다. 설치·표시 지원은 사용하는 클라이언트에서 확인합니다.
+Codex CLI:
 
 ```bash
 codex plugin marketplace add nns503/ns_skills
+codex plugin marketplace list
 ```
 
-참고: [OpenAI 플러그인 패키징 문서](https://developers.openai.com/plugins/build/plugins)
+Claude Code:
 
-## 공개 디렉터리와의 차이
+```text
+/plugin marketplace add nns503/ns_skills
+/plugin install ns-skills@ns-skills
+```
 
-GitHub 저장소를 마켓플레이스 소스로 사용하는 것과 공식 공개 디렉터리에 입점하는 것은 별개입니다. 공개 디렉터리 배포는 각 서비스의 패키징과 심사 요건을 별도로 확인합니다.
+설치 후 실제 스킬 식별자를 확인합니다. 플러그인 이름이 접두사로 붙는 등 표시 방식이 다를 수 있으므로 이름만으로 호출 성공을 가정하지 않습니다.
 
-참고: [OpenAI 플러그인 제출 문서](https://developers.openai.com/plugins/deploy/submission)
+## 설치 검증
+
+1. 새 대화에서 8개 스킬이 표시되고 작성 템플릿은 표시되지 않는지 확인합니다.
+2. `kickoff`를 단독 사용해 한국어 기획 결과와 요청 범위를 확인합니다.
+3. `app-orchestrator`로 작은 변경을 요청해 내부 단계와 참고 자료를 찾는지 확인합니다.
+4. 작업 기록이 대상 앱에 남고 설치 폴더에는 쓰이지 않는지 확인합니다.
+5. 외부 플러그인·배포 연결이 없어도 없는 실행을 성공으로 보고하지 않는지 확인합니다.
+
+검증 결과와 한계는 [초기 검증 시나리오](workflow.md)에 기록합니다.
+
+## 공개 디렉터리
+
+저장소를 마켓플레이스 소스로 사용하는 것과 공식 공개 디렉터리 입점은 별도입니다. 이 초안은 공개 심사·등재를 완료한 패키지가 아닙니다. 입점하려면 당시의 메타데이터·아이콘·테스트·심사 요건을 별도로 확인합니다.
+
+## 참고
+
+- [OpenAI 플러그인 패키징 안내](https://developers.openai.com/plugins/build/plugins)
+- [OpenAI 플러그인 제출 안내](https://developers.openai.com/plugins/deploy/submission)
+- [Anthropic 스킬 마켓플레이스 예시](https://github.com/anthropics/skills/blob/main/.claude-plugin/marketplace.json)

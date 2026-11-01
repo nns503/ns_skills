@@ -7,5 +7,22 @@
     "description": "한국어로 설명하고 관리하는 개인 에이전트 스킬 모음",
     "version": "0.1.0"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "ns-skills",
+      "description": "앱 기획·설계·구현·검증·배포를 연결하는 한국어 스킬 묶음",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/app-orchestrator",
+        "./skills/project-conventions",
+        "./skills/kickoff",
+        "./skills/experience-design",
+        "./skills/technical-design",
+        "./skills/implement",
+        "./skills/verify",
+        "./skills/release"
+      ]
+    }
+  ]
 }

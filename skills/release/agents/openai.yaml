@@ -1,0 +1,4 @@
+interface:
+  display_name: "환경별 릴리스와 배포"
+  short_description: "배포 환경과 플랫폼 및 배포 경로에 맞춰 준비와 실행 결과를 확인합니다."
+  default_prompt: "$release로 요청한 환경의 배포 준비 상태를 확인하고 범위에 맞춰 진행해줘."

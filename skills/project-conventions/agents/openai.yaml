@@ -1,0 +1,4 @@
+interface:
+  display_name: "프로젝트 공통 규칙"
+  short_description: "기존 프로젝트 규칙을 확인하고 작업에 필요한 공통 기준을 정리합니다."
+  default_prompt: "$project-conventions로 이 프로젝트의 규칙과 검증 명령을 확인해줘."

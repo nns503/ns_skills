@@ -1,0 +1,4 @@
+interface:
+  display_name: "앱 개발 오케스트레이터"
+  short_description: "신규 앱과 기능 변경의 필요한 단계를 선택하고 완료까지 연결합니다."
+  default_prompt: "$app-orchestrator로 현재 프로젝트를 파악하고 필요한 개발 단계를 계획해 완료까지 진행해줘."
