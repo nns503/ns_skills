@@ -53,3 +53,5 @@
 - [Superpowers 완료 전 검증](https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/verification-before-completion/SKILL.md): 완료 주장별로 실제 근거를 확인하는 기준 참고
 
 위 내용을 한국어로 재구성한 자체 검증 기준이다. 필수 테스트 수·커버리지 비율·고정 리뷰 문구를 추가하지 않는다.
+
+프로젝트에서 명시적으로 선택한 필수 검사·수치·리뷰 절차는 별도로 적용한다. 측정 범위·도구·허용한 예외와 실제 결과를 대조하고, 기본안이나 외부 레퍼런스로 이를 조용히 대체하지 않는다.

@@ -1,4 +1,4 @@
 interface:
   display_name: "프로젝트 공통 규칙"
-  short_description: "기존 프로젝트 규칙을 확인하고 작업에 필요한 공통 기준을 정리합니다."
-  default_prompt: "$project-conventions로 이 프로젝트의 규칙과 검증 명령을 확인해줘."
+  short_description: "기존 프로젝트 규칙을 재사용하고 필요한 미정 정책을 정리하고 기록합니다."
+  default_prompt: "$project-conventions로 기존 규칙을 확인하고 이번 작업에 필요한 미정 정책을 정리해줘."

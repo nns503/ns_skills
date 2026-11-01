@@ -33,3 +33,5 @@
 - [Superpowers: verification-before-completion](https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/verification-before-completion/SKILL.md): 성공 주장과 실제 확인 근거 연결 참고
 
 작업 위험에 맞춰 적용하며, 고정 횟수·무조건적인 TDD·매 응답의 전체 검사 재실행은 기본 요구로 채택하지 않는다.
+
+프로젝트가 TDD 적용 범위나 수정 후 필수 검사를 명시적으로 채택했다면 그 기준을 따른다. 위 문장은 스킬 자체의 기본값이며 채택한 프로젝트 정책의 예외가 아니다.
